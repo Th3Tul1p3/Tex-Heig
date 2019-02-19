@@ -1,0 +1,240 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+
+\title{Math TIC}
+\author{Jérôme Arn}
+\date{24 septembre 2018}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{trigonométrie}
+
+\[\frac{\alpha^{rd}}{\pi} = \frac{\alpha^{\degres}}{180}\]
+$$ L = \alpha^{rd}*r$$
+
+\section{calcul matricielle}
+\[A=[a_ij] \quad ssi \quad 1 \leqslant i \leqslant m \quad et \quad  1 \leqslant j \leqslant n \quad M_{mxn}(\mathbb{R})\]
+
+\[A=[(-1)^{i+j}] \quad ssi \quad 1 \leqslant i \leqslant 2 \quad et \quad  1 \leqslant j \leqslant 3 \quad M_{mxn}(\mathbb{R})\]
+
+\[
+M=
+  \begin{pmatrix}
+    a_11 & a_12 & a_13  \\
+    a_21 & a_22 & a_23
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    (-1)^{1+1} & (-1)^{1+2} & (-1)^{1+3}  \\
+    (-1)^{2+1} & (-1)^{2+1} & (-1)^{2+1}
+  \end{pmatrix}
+\]
+
+
+une matrice A est un tableau de m lignes et n colonne : A appartient à M n*M
+si m=n A est une matrice carrée. 
+
+\subsection{Egalité}
+\[A,B \in M_{mxn}(\mathbb{R}) \quad A = B \Longleftrightarrow a_ij = b_ij\]
+\[A = [a_ij], B = [b_ij]\]
+
+\subsection{Addition}
+\[A,B \in M_{mxn}(\mathbb{R}) \quad A = [a_ij] \quad B = [b_ij]\]
+\[C = A + B \in M_{mxn}(\mathbb{R}) \quad C = [c_ij]\]
+\[c_ij = a_ij + b_ij\]
+
+Exemple:
+
+\[
+A=
+  \begin{pmatrix}
+    2 & 3 \\
+    2 & 4
+  \end{pmatrix}
+B =
+  \begin{pmatrix}
+    1 & 2  \\
+    2 & 1
+  \end{pmatrix}
+\]
+
+\[
+C = A + B =
+  \begin{pmatrix}
+    2 & 3 \\
+    2 & 4
+  \end{pmatrix}
++
+  \begin{pmatrix}
+    1 & 2  \\
+    2 & 1
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    3 & 5  \\
+    4 & 5
+  \end{pmatrix}
+\]
+
+\subsection{Multiplication}
+\[A \in M_{mxn}(\mathbb{R}) \quad A = [a_ij] \quad \lambda \in (\mathbb{R}) \quad \lambda A = [\lambda a_ij] \]
+
+Exemple:
+
+\[
+3
+  \begin{pmatrix}
+    2 & 3 \\
+    2 & 4
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    6 & 9  \\
+    6 & 12
+  \end{pmatrix}
+\]
+\subsection{Multiplication matricielle}
+Condition: nombre de colonne A 0 nombre de ligne B.
+
+\[ AxB \quad A \in M_{mxn}(\mathbb{R}) \quad M_{nxp}(\mathbb{R})\]
+
+\[
+A=
+  \begin{pmatrix}
+    1 & 2 & 3 \\
+    -1 & 3 & 4
+  \end{pmatrix}
+B =
+  \begin{pmatrix}
+    2 & 4 \\
+    1 & 5  \\
+		-2 & -1
+  \end{pmatrix}
+\]
+
+\[
+AxB=
+  \begin{pmatrix}
+    1*2+2*1+3*-2 & 1*4+2*5+3*-1 \\
+    -1*2+3*1+4*-2 & -1*4+3*5+4*-1
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    2 & 4\\
+    -2 & 11  \\
+		-7 & 7
+  \end{pmatrix}
+\]
+
+Remarques: le produit matricielle n'est pas commutatif.
+
+\subsection{Propriétés}
+\[A( B + C ) = AB + AC\]
+\[(\lambda + \mu) A = A \lambda + A \mu\]
+\[(\lambda \mu) A = \lambda (\mu A)\]
+
+\section{Matrices Particulières}
+\subsection{Matrice diagonale}
+\[A \in M_{nxn}(\mathbb{R}) = M_{n}(\mathbb{R})\]
+
+\[
+A=
+  \begin{pmatrix}
+    2 & 0 & 0 \\
+    0 & 2 & 0 \\
+    0 & 0 & 2
+  \end{pmatrix}
+\]
+
+\subsection{Matrice triangulaire supérieur}
+\[A \in M_{n}(\mathbb{R})\]
+
+\[
+A=
+  \begin{pmatrix}
+    1 & 2 & 3 \\
+    0 & 1 & 4 \\
+    0 & 0 & 1
+  \end{pmatrix}
+\]
+
+\subsection{Matrice triangulaire inférieur}
+\[A \in M_{n}(\mathbb{R})\]
+
+\[
+A=
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    4 & 1 & 0 \\
+    3 & 2 & 1
+  \end{pmatrix}
+\]
+
+\subsection{Matrice identité}
+\[A \in M_{n}(\mathbb{R}) \quad I_n A = A I_n = A\]
+
+\[
+I_n=
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+  \end{pmatrix}
+\]
+
+
+\subsection{Matrice nulle}
+\[A \in M_{n}(\mathbb{R}) \quad 0_n + A = A + 0_n = A\]
+
+\[
+O_n=
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix}
+\]
+
+\subsection{Transposer des matrices}
+\[A \in M_{n}(\mathbb{R}) \quad A^t = \text{transposé de } A \]
+les lignes de A sont les colonnes de A transposé.
+
+\[A \in M_{mxn}(\mathbb{R}) \quad A^t \in M_{nxm}(\mathbb{R})\]
+
+\[
+A=
+  \begin{pmatrix}
+    1 & 2 & 3 \\
+    1 & 2 & 3 \\
+    1 & 2 & 3
+  \end{pmatrix}
+= A^t
+  \begin{pmatrix}
+    1 & 1 & 1 \\
+    2 & 2 & 2 \\
+    3 & 3 & 3
+  \end{pmatrix}
+\]
+
+\subsubsection{Propriétés}
+\[(A^t)^t = A \quad (A + B)^t = A^t + B^t \quad (AB)^t = (B^t A^t)\]
+
+\subsubsection{Matrice symétrique}
+\[A \in M_{n}(\mathbb{R}) \quad A^t = A\]
+
+\subsubsection{Matrice anti-symétrique}
+\[A \in M_{n}(\mathbb{R}) \quad A^t = -A\]
+
+\end{document}

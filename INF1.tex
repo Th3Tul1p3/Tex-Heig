@@ -1,0 +1,289 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{textcomp}
+
+\title{INF1}
+\author{Jérôme Arn}
+\date{23 septembre 2018}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Note du chapitre 1}
+\subsection{Variables}
+Une variable a un identificateur unique. Chaque variable est spécifique pour un type d'information. Une initialisation est en générale nécessaire mais n'est pas obligatoire.
+
+\bigskip % saut de ligne 
+\begin{tabular}{|l|l|}  
+
+\hline % pour rajouter des lignes horizontale
+Initilisation comme en C & int cansPerPack = 6; \\
+\hline % pour rajouter des lignes horizontale
+Initilisation par constructeur & int cansPerPack = (6); \\ 
+\hline % pour rajouter des lignes horizontale
+Initilisation uniforme C++ 2011 & int cansPerPack = \{6\}); \\ 
+\hline % pour rajouter des lignes horizontale
+
+\end{tabular} 
+\bigskip % saut de ligne 
+
+Les règles syntaxiques pour les identificateurs doivent commencer soit par une lettre (majuscule ou minuscule) ou un \_. Par la suite, il peut être constituer de lettres, de chiffres et de soulignés. L’identificateur doit toujours respecter la casse, il ne peut pas être un mot réservé du C++ et il n'a pas de limite de longueur. La norme camel est appliquée à la HEIG-VD. Si l'identificateur est constitué de plusieurs mots appondu, le premier débute par une minuscule et les suivant par une majuscule. Les identificateurs ne peuvent pas être des mots réservés du C++.\\
+
+\bigskip % saut de ligne 
+\begin{tabular}{|l|l|}  
+
+\hline % pour rajouter des lignes horizontale
+Opération d'affection & =  \\
+\hline % pour rajouter des lignes horizontale
+Opération d'incrémentation et décrémentation & ++ et - -  \\ 
+\hline % pour rajouter des lignes horizontale
+Opération de transfert & cin >> \\ 
+\hline % pour rajouter des lignes horizontale
+
+\end{tabular} 
+\bigskip % saut de ligne 
+
+\subsection{constantes}
+une constante est déclarée comme une variable mais avec le préfix \og const \fg. Elle doit être déclarée à son initialisation. Elle s'écrit en majuscule exemple : EXEMPLE\_CONSTANTE. Cela amène de la clarté au code ainsi qu'une possibilité de modification accrue pour une valeur utilisée plusieurs fois.
+
+\subsection{types}
+Les différents types de base peuvent stocker différentes données:
+\bigskip
+\begin{itemize}
+    \item [Caractères] ne peut contenir qu'un caractère
+    \item [Nombre entiers] contient des valeurs entières
+    \item [Nombre réels] contient des chiffres à virgule 
+    \item [Booléens] contient un \og true \fg ou un \og false\fg
+    \item [Adresse mémoire] contient l'adresse mémoire d'un autre élement
+        \begin{itemize}
+            \item int* stocke l'adresse d'une variable int 
+            \item int** stocke l'adresse d'une variable int*
+        \end{itemize}
+\end{itemize}
+\bigskip
+
+\section{Note du chapitre 2}
+\subsection{Entiers}
+Le C++ permet de choisir le nombre en ajoutant les préfixes short ou long. On peut choisir son signe en désignant signed ou unsigned. Comme les intervalles d'un type dépend du compilateur, du processeur et de l'OS. Des Macros existent pour savoir les valeurs limites des types. Ces macros se trouvent dans la librairie <limits>.
+
+\subsection{Réels}
+Le C++ fournit 3 types de nombrs réels le float, le double et le long double. Le float fonctionne avec une virgule flottante qui change uniquement grâce à l'indication de la position de la virgule. Les trois types sont constitués d'un bit de signe, d'une mantisse, d'un exposant, et d'une précision. La mantisse contient le nombre, l'exposant sert à déplacer la virgule et la précision assure un certain nombre de bit. 
+
+\subsection{Expressions}
+Tout ce qui correspond à une valeur est une expression en C/C++. Un caractère entre '', une chaîne de caractères, un entier ou un réel sont des expressions. 
+
+\bigskip % saut de ligne 
+\begin{tabular}{|l|l|}  
+
+\hline % pour rajouter des lignes horizontale
+Décimal & par défaut  \\
+\hline % pour rajouter des lignes horizontale
+Binaire & préfixe 0b \\ 
+\hline % pour rajouter des lignes horizontale
+Octal & préfixe 0 \\ 
+\hline % pour rajouter des lignes horizontale
+Héxadécimal & 0x \\ 
+\hline % pour rajouter des lignes horizontale
+
+\end{tabular} 
+\bigskip % saut de ligne 
+
+Lorsqu'on initialise une variable, le compilateur transforme la valeur dans un premier type capable de contenir et ensuite seulement il seulement il regarde le type que nous désirons. Il est possible de lui éviter ce travaille en déclarant les valeures comme suit:
+
+\bigskip % saut de ligne 
+\begin{tabular}{|l|l|}  
+
+\hline % pour rajouter des lignes horizontale
+unsigned & 123 U ou 9u \\
+\hline % pour rajouter des lignes horizontale
+long & 123L ou 9l \\ 
+\hline % pour rajouter des lignes horizontale
+combinaison des deux & 0x123LU ou 07ul \\ 
+\hline % pour rajouter des lignes horizontale
+
+\end{tabular} 
+\bigskip % saut de ligne 
+
+\subsection{Opérateurs aritmétiques}
+Sur les types réels, les opérateurs se comportent comme en mathématiques. Pour les entiers, l'opérateur / effectue une division entière et le \% calcul le reste de la division. Lorsqu'on effectue un modulo sur des entiers négatifs, le résultat de a\%b a le même signe que a. Pour des raisons pratiques, il est possible de simplifier une expressions comme suit:
+
+\bigskip % saut de ligne 
+\begin{tabular}{|l|l|}  
+
+\hline % pour rajouter des lignes horizontale
+nbre = nbre + 2; & nbre += 2; \\
+\hline % pour rajouter des lignes horizontale
+
+\end{tabular} 
+\bigskip % saut de ligne 
+
+La même simplification peut s'effectuer pour les incrémentations et les décrémentations. Cette opération peut se faire avant ou après la variable. L'effet sur la variable est identique mais suivant l'utilisation la valeur de retour peut changer car l'ordre de traitement change. \\
+La librairie <cmath> permet d'utiliser plusieurs outils mathématiques. 
+
+\subsection{Dépassement}
+Si un dépassement est effectué avec un entier non signé, il reprendra à 0. Si cela arrive sur un entier signé, le comportement est non défini à cause de la façon dont le compilateur gère le code. Il est conseillé de tester si nos calculs vont dépasser la valeur limite. 
+
+\subsection{Priorités}
+En programmation, la multiplication, la division et le modulo ont priorité sur les autres opérateurs. Si ils ont la même priorité, ils s'appliquent de gauche à droite. Il faut parfois faire attention à l'ordre des opérations pour éviter des dépassements. Les opérateurs unaires sont les signes devant les chiffres négatifs. Ils sont prioritaires sur les autres opérateurs. 
+
+\subsection{Conversions entre types}
+En C++ il existe deux manières de convertir des valeurs numériques. De manière explicite, le programmateur décide lui-même dans son code le type de sa valeur. De Manière implicite, le compilateur évalue et convertit l'expression selon ses règles. Toutes les conversions sont possible mais il peut y avoir des pertes. Il n'y a normalement pas d'avertissement du compilateur s'il y a un débordement ou une perte de précision lors d'une conversion explicite. 
+
+Pour faire explicitement la transformation d'une valeur dans un autre type, il y a deux solutions en C++, l'opérateur cast et la forme fonctionnelle. 
+
+\bigskip
+\begin{itemize}
+    \item [L'opérateur cast :] (type)expression.
+    \item [La forme fonctionnelle :] type (expression). A noter que cette manière de faire ne permet qu'un seul identificateur pour le type.
+\end{itemize}
+\bigskip
+
+De plus, le C++ distingue deux types de conversion entre type entiers. 
+
+\bigskip
+\begin{itemize}
+    \item [La promotion numérique :] qui se fait d'un type plus petit vers un type plus grand. Elle préserve toujours la valeur convertie et elle est appliquée implicitement avant l'évaluation de tout opérateur arithmétrique car ils ne prennent pas d'arguments plus petits que les integers. 
+    \item [L'ajustement de types :] quand la promotion n'est pas possible et entre type signé et non signé. Elle se fait vers un type non signé. Dans ce cas, la valeur est convertie modulo 2 puissance n bits. Elle se fait vers un type signé. Dans ce cas, si la valeur peut être représentée elle est simplement convertie, sinon cela dépend de l'implémentation. Idem s'il s'agit de float, double. 
+\end{itemize}
+\bigskip
+
+La conversion d'un entier à un réel suit la même règle que la conversion d'un réel vers un réel. Il faut faire à la taille des mantisses lors des conversions. Pour la conversion d'un réel vers un entier, la partie fractionnaire sera tronquée. Si la valeur ne peut pas être représentée sur le type entier, le résultat est indéfini. 
+
+la librairie cmath permet de faire des arrondis.
+\bigskip
+\begin{itemize}
+    \item [round :]  l'entier le plus proche
+    \item [floor :] l'entier le plus petit 
+    \item [ceil :] l'entier le plus grand 
+    \item [trunc :] tronquage de la partie fractionnaire
+\end{itemize}
+\bigskip
+
+\subsection{Conversions implicites dans les expressions arithmétriques}
+Les opérations se font entre deux opérandes de même type mais au minimum de type int. L'évaluation se fait selon la priorités des opérateurs. En premier les opérateurs unaires, puis multiplicatif et additif. 
+
+\subsection{Saisie et affichage}
+L'affichage peut être réglé pour afficher les nombres réels d'une certaine façon. cout << scientific ou fixed ou default<< setprecision(n). Pour default, le setprecision affichera n chiffre en tout, pour les autres options, ça sera n chiffres après la virgule. 
+\subsection{Caractères et chaînes de caractères}
+Le type char permet de stocker un caractère sur 7 bits ou des valeurs sur 8 bits. Pour déclarer un caractère dans un type char utiliser les ' '. Le type string non initialisé est une chaîne de caractère vide. L'opérateur + permet de concaténer deux chaînes de caractères. On peut accéder à un caractère d'un type string de la manière suivante: string[i]. 
+
+\section{Note du chapitre 3 - Partie A}
+\subsection{Blocs de code}
+Les instructions sont séparées par des points virgules. On peut grouper plusieurs intructions dans un bloc de code pour former une instruction composée. Il suffit de les entourer d'accolades. Les déclarations faites dans le bloc, ne sont visible que dans le bloc. 
+\subsection{if ... else}
+Le If ne peut contenir qu'une seule instruction ou un bloc d'instruction.  
+
+\subsection{Les conditions}
+Les expressions utilisées par les conditions sont soit vraies ou fausses. Toute valeur numérique non nulle est considérée comme vrai. Boolalpha et noboolalpha permettent d'afficher vrai ou faux en toutes lettres. Les opérateurs permettent de comparer des entiers, des réels et des chaînes de caractères. Ils faut faire attention aux types signés. 
+
+\bigskip
+\begin{itemize}
+    \item [< :] plus petit 
+    \item [> :] plus grand
+    \item [<= :] plus petit ou égal
+    \item [>= :] plus grand ou égal
+    \item [== :] égal
+    \item [!= :] différent
+\end{itemize}
+\bigskip
+
+\subsection{Les opérateurs logiques}
+L'évaluation des expressions se fait de gauche à droit et s'arrêtte dès que possible. 
+\bigskip
+\begin{itemize}
+    \item [|| (or):] opérateur OU . Il est le dernier dans la liste de priorité. 
+    \item [\&\& (and):] opérateur ET. Il est prioritaire sur l'opérateur ou. 
+    \item [! (not):] opérateur non. Il a la même priorité que les opérateurs unaires préfixes. 
+\end{itemize}
+\bigskip
+
+\subsection{switch}
+Le corps de l'aiguillage est un bloc. La fin d'un case doit être terminé par un break sinon les cas suivant seront exécutés. 
+
+\subsection{enum}
+Enum crée un nouveau type de donnée. L'identificateur se voit ensuite attribué un entier. Il sert à déclarer des constantes. Pour utiliser plusieurs fois le même type enum, il faut utiliser le enum class qui est propre au c++. Mais il n'est plus possible de faire de conversion implicite dans un entier, seul la conversion explicite est possible. 
+
+\section{Note du chapitre 3 - Partie B}
+\subsection{While}
+si la condition est satisfaite on fait le bloc d'instructions. Puis on retest la condition. 
+\subsection{For}
+La boucle for comporte trois parties distinctes. L'initialisation d'une variable à une certaine valeur. Tester la-dite valeur par rapport à une variable ou à un nombre. L'action sur la variable. A noter que la dernière partie peut-être diviser en plusieurs par des virgules. Ces différentes parties ne sont pas obligatoire mais il faut tout de même mettre le point virgule. les bornes symétriques sont représentées par un \og plus petit ou égal \fg et les bornes asymétriques par un \og plus petit que \fg. 
+
+La boucle for each, permet de parcourir les éléments d'un contenant. 
+\subsection{do..while}
+Exécute l'instruction de boucle au moins une fois. Elle peut être utilisé pour une boucle de saisie par exemple. 
+
+\subsection{Gestion d'erreurs d'entrée}
+\bigskip
+\begin{itemize}
+    \item [cin.fail():] renvoie un booléen s'il y a eut une erreur
+    \item [cin.clear():] réinitialise l'indication de l'erreur.
+    \item [cin.ignore()streamsize n, int delim = EOF:] permet de retirer n caractères du flux. 
+    \item [cin.good():] pas d'erreur
+\end{itemize}
+\bigskip
+
+\subsection{Instructions de saut}
+\begin{itemize}
+    \item [break:] permet de sortir de la boucle à n'importe quel instant. C'est le même break que pour le le switch.
+    \item [continue:] l'instruction continue interrompt l'itération en cours pour recommencer au début de la boucle. Généralement au moment de la condition (sauf pour la for où l'action est évaluée).
+    \item [goto:] en définissant une étiquette quelque part ailleurs dans le code, il est possible de sauter à cette étiquette avec un goto. Mais ne s'utilise pas en programmation haut niveau. 
+\end{itemize}
+\bigskip
+
+\section{Les sous-programmes}
+\subsection{Les paramètres}
+Les paramètres permettent de passer des informations entre le code appeleant et le block de code appelé. Il y a plusieurs façon de le faire. Par référence et par valeur.
+
+\subsubsection{Passage par valeur}
+Lors d'un passage par paramètre, la fonction utilisent des variables locales initialiser avec la valeur des paramètres transmis. Si nécessaire ces dernières sont converties. Les variables transmissent en paramètre ne seront donc pas modifiées.
+Ce type de passage utilise l'évaluation des valeurs transmises. C'est à dire que pour le passage en paramètre d'un i++ ou d'un ++i, le sens d'évaluation n'est pas définit. On peut donc obtenir des résultats différents selon les compilateurs.
+
+\subsubsection{Passage par référence}
+Pour modifier les variables transmissent en paramètres, il faut utiliser le passage en référence. Pour cela on ajoute un \& à la fin du type dans la déclaration des paramètres. 
+Mais cela implique d'être restreint lors du passage de paramètre. Toutefois, la notion de référence ne s'applique pas que au fonction. 
+
+Pour transmettre une variable par référence qu'on ne désire pas modifier, il suffit de la mettre en const. Autant dans la déclaration du paramètre que dans le passage de paramètre. De plus, il n'y pas de restrictions d'appel, des conversions implicites si besoin. L'utilité de passer des paramètres par référence constante est pour les types composés tel que tableaux, classes et strings. On économise une copie. De surcroît on évite les restrictions d'appel simple du passage par référence.
+\subsection{Return}
+Le return peut-être considéré comme un break pour la fonction. La valeur retournée par le return, s'il y en a une, est convertie dans le type de la fonction. Le return peut ne rien renvoyer à condition que le type de la fonction soit void sinon c'est une erreur. 
+Le retour par référence est utile pour avoir le retour de la fonction à gauche d'une affectation. Pour l'affectation s'évalue de droite à gauche tandis que les opérateurs de flux s'évaluent de gauche à droite. Une Lvalue désigne tout ce qui peut apparaître à gauche d'une affectation comme une variable ou une référence. Une Rvalue désigne tout ce qui ne peut pas apparaître à gauche comme des constantes et référence constante. 
+\subsection{Prototypes et compilation séparée}
+Un prototype de fonction consiste à déclarer la fonction au préalable avec son interface. Cette solution a besoin d'un \og ; \fg à la fin de  sa déclaration et doit être placé avant le main. Lors de la déclaration du prototype, il faut mettre le type des paramètres ainsi que leurs ordres. Cela ne doit pas différé de la définition de la fonction. Il est aussi possible dans le prototype, et uniquement dans le prototype, de préciser des valeurs par défaut pour certains paramètres. Cependant il n'est pas possible ne pas passer un paramètre si celui-ci ne se trouve pas en dernière position.
+
+La compilation séparée sert à diviser le programme en différente sous catéories. Un fichier header pour pour les déclarations de fonctions et un .cpp pour le code éxécutable. Dans le programme principal, seul le .h est inclus.
+La compilation s'effectue en deux étapes, d'abord chaque fichier .cpp est compilé séparément pour créer un fichier objet. Toutes les fonctions utilisées sont déclarées uniquement une fois. Les fonction static n'ont pas besoin d'être définie dans le fichier d'en-tête. Puis ensuite l'éditeur de liens regroupe les .obj et ceux de la bibliothèque standard. Pour déclarer qu'une seule fois chaque fonction, il fau tutiliser les directives préprocesseur. \#ifndef XXXX\_H puis un \#define XXXX\_H suivi desdéclarations de fonctions et à la fin \#endif. 
+\subsection{Les variables locales, globales, statiques,...}
+Les variables locales ne sont visible que pour la fonction. Elles sont crées automatiquement à chaque appel de fonction mais non initialisées. Et elles disparaissent quand la fonction se ferme. 
+
+Les variables globales sont visibles pour toutes les fonctions, statiquement et initialisé automatiquement à zéro (suivant le type). Elles ne disparaissent qu'au terme du programme. Si une variable globale est déclarée dans un .cpp, elle est visible que pour le .cpp. Si on veut la déclarer dans un fichier d'en-tête il faut utiliser le préfixe extern. 
+
+Une variable static est initialisé une seule fois, quelque soit le nombre d'appel de la fonction. Elle est aussi initialisé automatiquement à zéro. Une variable globale peut aussi être static, cela indique qu'elle est utilisable que dans le fichier .cpp qui la contient. 
+\subsection{Commentaires}
+
+\subsection{Surcharge de fonctions}
+La surcharge de fonctions est l'utilisation d'un même nom pour des fonctions qui ont le même but mais pas les mêmes paramètres. Cela est possible si leurs signatures diffèrent. 
+La signature correspond aux caractéristiques des paramètres. En fonction de leur nombre et de leur type respectif. Ensuite le compilateur choisit la fonction à utiliser. Les éléments suivant ne permettent pas de différencier deux surcharges: le type de retour, les valeurs par défaut des paramètres et la présence d'un const pour un paramètre passé par valeur. La compilation n'est pas possible dans les cas cités ci-dessus. En revanche, si le type change pour un paramètre passé par valeur, par référence ou par référence constante, c'est une surcharge. 
+\bigskip
+\begin{itemize}
+    \item [Correspondance exacte:] les types correspondent aux types demandés. 
+    \item [Conversion simple:] passage de variable à constante. 
+    \item [Promotion numérique:] il faut seulement faire une promotion numérique pour correspondre aux types demandés.
+    \item [Conversion de type:] le type ne correspond pas, il faut le convertir. 
+\end{itemize}
+\bigskip
+
+Le compilateur s'arrête au premier niveau de correspondance trouvé. S'il y a deux possibilités, il y a erreur. Une conversion de type dégradande est considéré au même niveau qu'une conversion de type normal.
+\subsection{Conception de fonctions}
+Lorsqu'un bout de code se répète à l'identique, il faut le remplacer par une fonction. Pour définir correctement une fonction, il faut découper le code en tâche simple par une approche descendante. 
+\subsection{Récursivité}
+Une fonction peut s'appeler elle-même mais elle doit respecter certaines règles. Comme la présence d'un cas trivial. Mais une fonction peut couter cher en mêmoire et en ressource. C'est pourquoi il faut envisager des boucles en lieu et place d'une fonction récursive.
+Pour une fonction récursive, il faut stocker les différents paramètres, les variables locales, et l'adresse de retour. 
+\end{document}
