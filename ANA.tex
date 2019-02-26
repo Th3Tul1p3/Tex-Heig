@@ -1,0 +1,149 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[francais]{babel}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\input{unicode.tex}
+%\usepackage{boisik}
+
+\title{Analyse \\ Note de cours}
+\author{Gabriel Roch}
+\date{19 février 2019 -- \today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{Note de cours}
+\chapter{Nombre complexes}
+
+\begin{align*}
+   ℕ &= \{0,1,2,3,4,…\} & -1 ∉ ℕ \\
+   ℤ &= \{…, -2, -1, 0, 1, 2, …\} & \frac{1}{2} ∉ ℤ \\
+   ℚ &= \{\frac{m}{n} | m ∈ ℤ, n ∈ ℕ*\} & \pi, e ∉ ℚ \\
+   ℝ &= \{\frac{m}{n}, -2, 0, 3, e, \pi, …\} \\
+   ℂ &= \text{Nombre complexes} & ∈ ℝ^2 \\
+   ℍ &= \text{Coprs des quaternions (sans commutativité)} & ∈ ℝ^4
+\end{align*}
+\begin{align*}
+   j^2 &= -1 \\
+   Z &= a + jb & a,b &∈ ℝ & \text{Forme rectangulaire} \\
+   Z* &= a - jb & \bar{Z} &= Z* & \text{Conjugué de Z}
+\end{align*}
+
+%R : droite a ≠ 0 => 1/a exists a·1/b = 1
+%
+%C : R² = R×R
+%
+%R, j \notin R
+%IMPORTANT: j² = -1
+%
+%Z \in C
+%// forme réctangulaire | carthésienne
+%Z = a+jb
+%
+%Z₁ = a₁+jb₁
+%Z₂ = a₂+jb₂
+%
+%Z₁Z₂ = (a_1+jb_1)(a_2+jb_2) = …
+%
+%IMPORTANT: Z_1Z_2 = (a_1a_2 - b_1b_2) + j(a_1b_2 + a_2b_1)
+%
+%Z₁Z₂ = Z₂Z₁
+%
+%EXAMPLE
+%------
+%
+%z=1j
+%
+%
+%R³ → pas de corps
+%R⁴ → Hamilton Quatenions (corps) = H  [mais pas commutatif]  surtout en mécanique
+%Corps fini pour la sécu
+
+\section{Conjugaison}
+\begin{align}
+   z &= a + jb & a,b \in \mathbb{R} \\
+   z* &= a-jb
+   z z* &= (a+jb)(a-jb) = a^2 - j^2b^2 = a^2 + b^2 \\
+   z z* &= d^2(0,z)
+\end{align}
+Form rectangulaire de $\frac{1}{z}$, $z \neq 0$
+
+\begin{align}
+   \frac{1}{z} &= \frac{1 \cdot z*}{z\cdot z*} = \frac{ a-jb}{a^2+b^2} \\
+   \frac{1}{z} &= \frac{a}{a^2 + b^2} - j\frac{b}{a^2+b^2} & \text{Frome rect de 1/z}
+\end{align}
+Exemple
+
+\begin{align}
+   \frac{1}{2-j} &= \frac{2+j}{(2-j)(2+j)} = \frac{2+j}{5} = 2/5 + \frac{1}{5} j \\
+   z = a+jb\\
+   Re(z) &= \frac{z + z*}{2} \\
+   Im(z) &= \frac{z-z*}{2} \\
+\end{align}
+
+\begin{align}
+   Re(z) &= a\\
+   z + z* &= a [[+jb]] + a [[ -jb]] = 2a \\
+   a = \frac{z+z*}{2} \\
+   z-z* = (a+jb)- (a-jb) = 2jb \\
+   b = \frac{z-z*}{2j}
+\end{align}
+
+\begin{align}
+   j^n = j^{n \text{ mod } 4}
+\end{align}
+
+\subsection{Propriétés}
+\begin{align}
+   (Z_1 + Z_2)* &= Z_1* + Z_2* \\
+   (Z*)* &= Z \\
+   (Z_1Z_2)* &= Z_1* Z_2* \\
+   \left(\frac{Z_1}{Z_2}\right)* &= \frac{Z_1*}{Z_2*} \\
+\end{align}
+
+\section{Module de $Z$}
+\begin{align*}
+   Z &= a+jb \\
+   |Z| &= \sqrt{a^2+b^2} & a,b ∈ ℝ
+   |Z|^2 &= ZZ* \\
+   |Z| = \sqrt{ZZ*} \\
+\end{align*}
+\begin{align*}
+   |Z| &\geqslant 0 \\
+   |Z| &= d(0,Z) \\
+\end{align*}
+
+\subsection{Propriétés}
+\begin{align}
+   |Z| &\geqslant 0 \\
+   Z_1 &= a_1 + b_1j & Z_2 &= a_2 + b_2j & |Z_1Z_2| &= |Z_1||Z_2|  \\
+   Z_1 &= a_1 + b_1j & Z_2 &= a_2 + b_2j & |\frac{Z_1}{Z_2}| &= \frac{|Z_1|}{|Z_2|} \\
+   |Z|^2 &= ZZ* \\
+   |Z| &= \sqrt{ZZ*} \\
+\end{align}
+\begin{align*}
+   ZZ* &= (a+jb)(a-jb) = a^2-(jb)^2 = a^2 + b^2 &&= |Z|^2
+\end{align*}
+
+Le module ($|Z|$) est une extension de la valeur absolue.
+
+\[
+   |(1+j)^{10}| = |1+j|^{10} = \sqrt{2}^{10} = 2^5 = 32
+\]
+
+exemple
+
+\[
+   |(\frac{1-j}{1+j})^{10}| = \frac{|1-j|^{10}}{|1+j|^{10}} = \frac{\sqrt{2}^{10}}{\sqrt{2}^{10}} = 1
+\]
+
+\end{document}
