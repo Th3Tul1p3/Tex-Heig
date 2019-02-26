@@ -16,7 +16,7 @@
 \tableofcontents
 \newpage
 
-\section{Qualité d'un programme}
+\section{Introduction}
 La fiabilité, la robustess, l'extensibilité, la réutilisabilité, la compatibilité et l'efficacité.
 
 \uline{Algorithme:} ensemble fini d'étape dont le but est de résoudre un problème ou d'accomplir une tâche. Ces étapes sont forméesd'un ensemble fini d'opérations. 
@@ -30,7 +30,12 @@ La fiabilité, la robustess, l'extensibilité, la réutilisabilité, la compatib
 \end{itemize}
 \bigskip
 
+\subsection{Lineaire vs. Dichotomique}
+Pour 1000 dossiers triés alphabétiquement, une recherche dichotomique demande 1000 consultations dans le pire des cas. Pour le même cas avec une recherche dichotomique, on aura dans le pire des cas 10 consultations. Mais dans certains cas, la recherche est quand même plus rapide. 
+
 \section{Complexité}
+Cela définit, en termes de ressources, le besoin d'une algorithme pour être exécutée. L'efficacité se mesur en fonction d'un paramètre n qui caractérise la quantité d'éléments à traiter. La complexité caractérise son coût en temps processeur en fonction de la taille de la données. Cependant on ne cherche pas une mesure précise mais une estimation du nombre d'opérations élémentaires nécessaires. 
+
 \begin{itemize}
 	\item[Une incrémentation:]Complexité de O(1)
 	\item[une boucle fait N fois:] Complexité de O(N)
@@ -39,6 +44,16 @@ La fiabilité, la robustess, l'extensibilité, la réutilisabilité, la compatib
 	\item[enchaînement alternatif:] La complexité dans le meilleur des cas, dans le pire des cas et en moyenne
 \end{itemize}
 \bigskip
+Le tri d'un vecteur, par exemple, peut faire appel au probabilités. Dans le meilleur des cas il est déjà trié, dans le pire des cas il est trié à l'envers. Dans ce genre de cas la complexité moyenne est la même que la complexité dans le pire des cas. 
+La complexité de la recherche séquentielle est dans le meilleure des cas de O(1) si on trouve directement. Dans le pire des cas on parcout tout l'objet et la complexité est de O(n). Le cas moyen donne $$ (n+1)/2 $$ ce qui vaut à O(n). 
 
-\newline 
+\subsection{Notation de Landau}
+Une fonction f est un grand O de la fonction g. Ce qui signifie que f croît au plus vite que g. De cela découle deux règles simple:
+\begin{itemize}
+	\item[Si la fonction est la somme de plusieurs termes, si l'un deux croît plus vite que les autres, on ne garde que lui et on ignore les autres.]
+	\item[Si la fonction est le produit de plusieurs facteurs, on peut ignorer tout facteur constant.]
+\end{itemize}
+\subsection{Notations complémentaires}
+
+
 \end{document}
