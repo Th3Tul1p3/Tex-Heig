@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\title{ISI}
+\author{Jérôme Arn}
+\date{2 février 2019}
+
+\begin{document}
+\section{Introduction}
+La sécurité n'est souvent pas considéré comme un produit qui rapporte de l'argent. Il est aussi difficile de quantifier la valeur ajoutée. Mais un manque de sécurité peut provoquer des pertes financières, une dégradation de l'image ou une perte de confiance. 
+
+\section{Aspects légaux}
+\bigskip
+\begin{itemize}
+	\item[La soustraction de données art. 143]
+	\item[L'accès indu à un système informatique art. 143bis]
+\end{itemize}
+\bigskip
+Il n'y a pas que ces domaines juridiques qui sont touchés. La propriété intellectuelle, la protection des données personnelles, les contrats sont les différents qui peuvent être touchés.
+\section{SSI}
+La SSI peut être définie comme la sécurité des informations dans un système d'information. Un système d'information étant un ensemble de personne qui receuillent de l'information pour une organisation. 
+Le modèle en oignon est constitué dans l'ordre:
+A partir de la deuxième couche, la sécurité est dite technique. Pour une sécurité efficace, chaque couche doit implémenter ses propres concepts de sécurité. De plus il contrôle l'accès à la couche supérieur. Il faut éviter les systèmes en coquille d'oeuf.
+\bigskip
+\begin{itemize}
+	\item[Physique:]éviter des dégâts sur les infrastructures techniques.
+	\item[Réseau:]architecture et éléments réseau.
+	\item[Protocole:]protocoles de communication.
+	\item[Hôte:]systèmes d'exploitation et applications hosts.
+	\item[Application:]langage de programmation, données spécifiques. 
+	\item[Information:]information à protégé.
+\end{itemize}
+\bigskip
+
+\newline \uline{CIA(CID)} Confidentialité: s'assurer que seul les personnes ayant droit peuvent accéder à l'information, intégrité: protéger l'exactitude et la complétude de l'information et disponibilité: s'assurer que les utilisateurs ont accès à ce qu'il faut quand il faut. 
+\newline \uline{AAA} Authentification: s'assurer que la personne est bien celle qu'elle prétend être, Autorisation: détermine en fonction de la personne si l'accès est autorisé et Accountings'assurer d'une tracabilité des opérations effectuées. 
+
+Il existe trois domaines en SSI. la sécurité physique, la sécurité organisationnelle et la sécurité technique.
+
+\bigskip
+\begin{itemize}
+	\item[Physique:] infrastructures, contrôle d'accès physique, câblage.
+	\item[Technique:] le traitement, le stockage et la communication de l'information. 
+	\item[Organisationnelle:]aspects sociaux, légaux, humains. Les procédures, contrats.
+\end{itemize}
+\bigskip
+Une vunérabilités est une faille encore non exploitée d'un bien. L'exploitation est lorsque la vulnérabilité a été utilisée. Les conséquences d'un dommage sont évalués en fonction de la perte de confidentialité, de la perte d'intégrité et/ou de la perte de disponibilité de l'information. 
+Une activité en SSi peut être vu comme une prévention, une détection, une réaction et une récupération. 
+
+\section{Fondamentaux en architecture}
+\bigskip
+\begin{itemize}
+	\item[La sécurité globale est aussi forte que le maillon le plus faible]
+	\item[La sécurité parfaite est impossible]
+	\item[La sécurité est un processus et non un produit]
+	\item[La sécurité est inversement proportionnelle à la complexité]
+	\item[Inclure les utilisateurs]
+\end{itemize}
+\bigskip
+
+\section{Stratégie d'architecture}
+\bigskip
+\begin{itemize}
+\end{itemize}
+	\item[Interdiction par défaut]
+	\item[Moindre privilège]
+	\item[Défense en profondeur]
+	\item[Séparation des fonctions]
+	\item[Segmentation]
+	\item[Economie de mécanisme]
+	\item[Goulet d'étranglement]
+	\item[Interruption sûre]
+	\item[Eviter la sécurité par l'obscurité]
+\bigskip
+\end{document}
