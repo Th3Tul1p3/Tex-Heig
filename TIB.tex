@@ -20,7 +20,29 @@ la téléinformation traite des Services et application, des Protocoles de commu
 	\item[Tim Berners-Lee :]inventeur du web, adressage web, HTTP.
 \end{itemize}
 
-\section{}
+\section{Réseaux}
+\bigskip
+\begin{itemize}
+	\item[PAN personnal area network:] bluetooth nfc, interconnexion entre périphérique. va de 1 à 10 m.
+	\item[LAN Local area network:] réseau d'une entreprise ou d'un campus. ethernet et WIFI
+	\item[MAN Metropole area network:]Réseau d'un opérateur dans une ville. fibres optiques, WiMax et Metro-Ethernet. très grande vitesse.  
+	\item[WAN wide area network:]Fibres optiques, Faisceaux hertziens et satellites. 10 à 1000km
+	\item[internet] interconnexions de tous les réseaux. 
+\end{itemize}
+\bigskip
+Topoligie en Bus, Tous les noeuds sont connectés au même médium. Une seule transmission possible au même moment. distance de communication basse. limité à 1024. Le hub résout le problème, si une machine pose problème sur le bus, elle est éjecter du bus. 
+Topologie en anneau, un segement de câble connecte deux stations. résilience contre les pannes. tokenring utilisait un système de jeton pour savoir qui transmet. 
+Topologie en étoile, chaque station est connecté à un noeud central. Le noeud central transmet à toutes les stations. 
 
+Topologie maillée, interconnexion entre tous les noeuds. Bonne résilience utilisation 
+\section{Commutation}
+La commutation est le processus d'acheminement de données à travers un réseau. Il y a deux types de commutation: par circuit et par paquets. 
+\subsection{Commutation par circuit}
+Utilisés dans les réseaux téléphoniques. Mais cela n'est pas adapté aux réseaux informatiques.
+ Car cela n'est pas assez rapide.
+\subsection{Commutation par paquets}
+La source segmente le message à transmettre en paquets. Ensuite les paquets sont transmis de manières indépendante. Le destinataire trcombine les paquets reçus pour obtenir le message. Il y a plusieurs chemins. Si un paquet est perdu, on retransmet que le paquet. Conversion des formats possible et reroutage facile en cas de panne d'un lien. Mais le délai de transfert est variable et plus long. Pertes de paquets possibles. Noeuds intermédiaires doivent recevoir l'ensemble du paquet pour commencer à le transmettre. Si la file d'attente est trop longue, il se peut qu'on doive recommencer la transmission. 
+\subsection{Paramètres de performance}
+Délai, Vitesse, Longueur deonnées, Débit binaire et taux de perte. 
 \end{document
 
