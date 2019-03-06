@@ -32,5 +32,6 @@ L'opérateur d'affectation doit être une fonction membre. Ce dernier retourne u
 La déclaration d'une variable statique se fait dans le fichier header mais en dehors de la déclaration de la classe. Une fonction membre peut aussi être déclarée static. Cela implique qu'elle n'a pas accès aux membres non static, elle ne s'applique pas à un objet spécifique. Pour y accéder il faut l'opérateur de portée. 
 \section{Membres particuliers}
 Les fonctions membres suivantes sont définies implicitement par le compilateur:constructeur par défaut, destructeur, constructeur de copie, opérateur d'affectation, constructeur de déplacement et opérateur de déplacement. Si et seulement si la classe n'en possède pas d'autre. 
-
+\section{Généricité}
+Pour écrire une fonction générique, on rajoute Template \{ <liste de paramètres> déclaration \}en dessus de la définition de la fonction. On peut déclarer des fonctions, des classes et des variables génériques. 
 \end{document}

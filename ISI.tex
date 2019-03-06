@@ -75,4 +75,22 @@ Une activité en SSi peut être vu comme une prévention, une détection, une r�
 	\item[Interruption sûre]
 	\item[Eviter la sécurité par l'obscurité]
 \bigskip
+\section{Sécurité systèmes}
+On peut différencier trois types de menaces différentes, les menaces accidentelles, environnementales et les délibérées. La norme ISO 27005 différencie 6 types de vulnérabilités: matériel, logiciel, réseau, personnel(social), site(infrastructures) et organisation(processus). 
+
+La procédure type d'une intrusion commence par une collecte d'informations qu'elles soient technique ou non. Pour cela on peut faire des recherches web(avec des commandes google, ou réseau sociaux), le questionnement de services internet et le social engineering. Ce dernier consiste à gagner la confiance de personne pour obtenir des services ou des informations. 
+
+La prochaine étape est l'intrusion systèmes. Soit par des vulnérabilités conceptuelles, d'implémentation ou de configuration. 
+\subsection{Les mots de passe}
+Les mots de passe contrôlent l'accès à de l'information en général. Ils sont généralement transmit sous formes d'empreintes. Une empreinte est générée par une fonction de hachage qui est un procédé cryptographique irréversible.
+
+Le cassage de mots de passe en ligne peut se faire en ligne ou hors ligne. En ligne, l'attaquant doit dans un premier temps essayer le mot de passe puis attendre la réponse système. Mais cela laisse des traces dans les fichiers logs. Hors ligne, IL faut obtenir les empreintes et ensuite procéder à l'attaque. 
+Il y a plusique type d'attaque. la force Brute recherche exhaustive de toutes les combinaisons. Cette méthode à l'avantage de ne pas nécessité de mémoire mais elle a besoin de beaucoup de temps. Par dictionnaire, utilisation d'une liste. Heuristique, variations des éléments du dictionnaires. Ces deux dernières méthodes ont besoin de peu de temps mais d'une quantité énorme d'espace. Et Prégénération des empreintes, avec la méthode Hellman pour le compromis temps-mémoire et la méthode Oeschlin pour les rainbow tables. La recherche naïve va tester toutes les combinaisons aléatoirement. 
+
+Le compromis temps-mémoire consiste à choisir un mot de passe et à lui appliquer consécutivement une fonction de hachage et une fonction de réduction. on constitue ainsi un tableau
+déjà préparé. 
+La rainbow tables fait la même chose mais en changeant de fonction de réduction à chaque fois. 
+
+Une manière de renforcer la sécurité est d'ajouter un aléa ou sel lors du hachage. Cela consiste à générer une partie aléatoire pour la la partie du mdp. Cela à l'avantage d'éviter d'avoir le même hache si deux mdp sont les mêmes. 
+Les mdp sous Windows sont protéger soit par LM hash ou NTLM hash (plus récent). Le chiffrage sous linux dépend de l'OS mais est généralement sous MD5. 
 \end{document}
