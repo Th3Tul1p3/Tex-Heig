@@ -67,5 +67,9 @@ Les opérations sur une TDA sont classées en 4 catégories:
 	\item[Itérateurs:] qui permettent le parcours de la structure. 
 \end{itemize}
 
+\section{Récursivité}
+La complexité d'une fonction récursive est en général constanste si on omet les appels récursif. Ce qui veut dire que la complexité final dépend uniquement du nombre d'appel. Dans le cas d'une fonction calculant la factorielle de N, la complexité est de O(N)
+
+Dans le cas de la fonction de Fibonacci, la complexité est de $$ x^(\phi) $$, oû \phi est le nombre d'or. Pour l'algorithme d'Euclide le pire cas est quand une des opérandes est un nombre de Fibonacci et que l'autre est un nombre de Fibonacci de valeur k-1. La complexité dans ce cas est de $$ O(log_(\phi)(n)) $$.Dans le cas des tours de Hanoï, la complexité dépend du nombre et donce du nombre de déplacement. Pour n nombre de disque, on aura N-1 déplacement pour déplacer tous les petits disques du piquet de base au piquet intermédiaire + 1 déplacement pour le grand disque sur le piquet final. 
 
 \end{document}

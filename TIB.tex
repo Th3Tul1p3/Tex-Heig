@@ -43,6 +43,15 @@ Utilisés dans les réseaux téléphoniques. Mais cela n'est pas adapté aux ré
 \subsection{Commutation par paquets}
 La source segmente le message à transmettre en paquets. Ensuite les paquets sont transmis de manières indépendante. Le destinataire trcombine les paquets reçus pour obtenir le message. Il y a plusieurs chemins. Si un paquet est perdu, on retransmet que le paquet. Conversion des formats possible et reroutage facile en cas de panne d'un lien. Mais le délai de transfert est variable et plus long. Pertes de paquets possibles. Noeuds intermédiaires doivent recevoir l'ensemble du paquet pour commencer à le transmettre. Si la file d'attente est trop longue, il se peut qu'on doive recommencer la transmission. 
 \subsection{Paramètres de performance}
-Délai, Vitesse, Longueur deonnées, Débit binaire et taux de perte. 
+Délai, Vitesse, Longueur deonnées, Débit binaire et taux de perte.
+
+\section{Modèle de référence}
+Les logiciels réseaux sont organisés en pile de couches. Chacunes de ces couches offre un service bien défini. Des entités paires qui communiquent sont du même niveau. Pour communiquer entre elles utilisent un protocole de communication. 
+Le chemin réel emprunté par les données traverse toutes les couches de la plus hautes à la plus basse jusqu'au médium physique. L'entité de chaque couche utilise un protocole pour communiquer avec son pair. Chaque protocole peut ajouter un en-tête ou en-queue. Mais ces informations ne sont utilisés que par son entité pair et sont enlevées lors de la lecture par l'entité pair. Les systèmes terminaux, sont les seuls à implémenter toutes les couches. L'implémentation des couches dépend des noeuds intermédiaires. 
+
+\subsection{Référence OSI}
+Le modèle OSI a été introduit 1983. Il sert à analyser et concevoir des logiciels réseau. Il définit un cadre pour l'élaboration de chaque couche. 
+
+1.2: des logiciels et client web
 \end{document
 
