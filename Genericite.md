@@ -1,3 +1,28 @@
+# classe révision test
+
+L'opérateur d'affectation composé est obligatoirement une fonction membre. 
+
+```c++
+// initialisation 
+obj(1.0);
+obj2 = 2.0;
+obj3{3.0};
+obj4 = {4.0};
+// constructeur à plus de deux arguments seulement les deux derniers. 
+```
+
+
+
+## Membre static
+
+Un membre d'une class peut être déclaré static, il est unique pour la classe et il est commun à tous les objets de cette classe. On y accède via l'opérateur de portée (::) ou comme membre d'un objet avec la notation pointée. Les membres static sont initialisés dans le .h 
+
+Les fonctions membres static n'ont pas accès aux membres non static. Si elle est public on y accès avec l'opérateur de portée.
+
+## membre constant
+
+Les membres constant peuvent varier d'un objet à un autre. l'initialisation se fait lors de la construction de l'objet. 
+
 # Fonction génériques
 
 la déclaration est la définition d'une fonction sont précédées du mot template.
@@ -9,14 +34,14 @@ template <typename T> void echanger (T& v1){ //...
 }
 ````
 
-On peut aussi utiliser class à la place de typename mais c'est uniquement pour être retro compatible. Une définition de fonction ne crée pas de code si elle n'est pas instanciée. soit explicitement par une déclaration:
+On peut aussi utiliser "class" à la place de "typename" mais c'est uniquement pour être retro compatible. Une définition de fonction ne crée pas de code si elle n'est pas instanciée. 
 
 ```` c++
-template void echanger<int> (int&);
-// ou impliciement par l'appel d'une fonction, dans ce cas les types seront déduits
+template void echanger<int> (int&);	// explicitement
+echanger<int>(a,b);					// ou impliciement 
 ````
 
-Il peut y avoir plusieurs paramètres génériques. Pour les fonctions, il n'est pas nécessaire de préciser les types souhaités. ils peuvent être déduits mais cela n'est pas le cas pour les classes. Pour la déduction des arguments c'est toujours le type exact qui est demandé.  On peut aussi assigner une valeur par défaut aux paramètres génériques. La déduction d'arguments prime sur la valeur par défaut. 
+Il peut y avoir plusieurs paramètres génériques. Pour les fonctions, il n'est pas nécessaire de préciser les types souhaités. ils peuvent être déduits mais cela n'est pas le cas pour les classes. Pour la déduction des arguments c'est toujours le type exact qui est demandé.  A noter que le "<>" est optionnel s'il y a déduction de type. On peut aussi assigner une valeur par défaut aux paramètres génériques. La déduction d'arguments prime sur la valeur par défaut. 
 
 ## spécialisation 
 

@@ -46,5 +46,11 @@ On recherche l'élément le plus petit du tableau est on le place au début du t
 
 ## Tri en C et C++
 
+# structures linéaires
+
+insérer à la fin devient le pire cas quand la taille == la capacité. suppression à la fin pourrait être de complexité constante si on utilise pas shrink to fit. 
+
+
+
 
 

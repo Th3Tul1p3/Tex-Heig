@@ -47,4 +47,31 @@ L'adresse physique d'une carte réseau  est en générale programmé dans la ROM
 
 Les adresses MAC de groupe sont signalé par le dernier bit du premier octet. S'il est paire c'est individuelle, sinon c'est une adresse de groupe. Les adresses de broadcast sont  utiliser pour les requêtes DHCP. 
 
-  
+  ## Ethernet avec un hub
+
+un hub permet un câblage physique en étoile. Il se comporte comme un bus partagé topologie logiques. Ses principales fonctions sont le travail au niveau de couche physique, reçoit contrôle et régénère les bits reçus et un bit reçu est retransmis sur tous les ports.  
+
+La transmission sur un médium partagé permet une seule transmission à la fois, si deux stations transmettent en même temps, il y a collision. dans ce cas, le récepteur reçoit n'importe quoi. si on utilise ce protocole on a plus de 80% de perte. Pour éviter cela, la méthode CSMA est utilisé. Il y a le CSMA persistant et non-persistant. Le CSMA persistant consiste à écouter et transmettre dès que le canal est libre mais il y a possibilité que deux émetteur essaie de transmettre en même temps. Le CSMA non persistant résout un peu le problème  en introduisant un délai aléatoire d'attente pour chaque machine. Le Carrier Sense écoute si le canal est libre avant de transmettre. Le Multiple Access partage le canal de transmission. S'il y a collision il envoie 32 bits de jam de bourrage de donnée aléatoire. Le jam sert à dire à tous les récepteur qu'il y a collision.  Pour détecter la collision, un émetteur transmet et écoute en même temps, s'il voit que cela ne correspond pas à ce qu'il a envoyé , il arrête de transmettre. la trame ethernet est prévue pour transmettre pendant 50 ms au minimum.  Ethernet utilise CSMA persistant et wifi non persistant. 
+
+L'algorithme CSMA/CD apporte une amélioration de détection de collision. Il essaie de transmettre le paquet 16 fois et après il arrête. Si une collision est détectée, on envoie un jam, on attend un délai aléatoire et on ressaie. après chaque essai, le temps aléatoire augmente de manière exponentiel pour désengorger le réseau. 
+
+## Ethernet avec un switch 
+
+Un switch travaille à la couche 2, il connaît le format des trames et peut interpréter les adesses MAC. Quand il reçoit une trame, il l'analyse et la retransmet si elle est correct. Topologie physique et logique en étoile. Ses principaux avantages sont la transmission en parallèle, et il transmet la trame en fonction de son adresse. Ses fonctions sont la commutation de trames, l'acheminement vers le destinataire, arbre recouvrant pour éviter les boucles. 
+
+### Commutation de trames
+
+Les ports sont composés d'un récepteur et d'un émetteur qui sont connecté à une matrice de commutation. Ils sont chacun indépendant. 
+
+### ethernet full  et half duplex 
+
+Effectue une transmissions simultanées dans les deux sens. Il n'y a pas de collisions possibles et CSMA/CD n'est pas nécessaire. 
+
+Duplex veut dire qu'on transmet dans les deux sens. Le mode half duplex définit que soit on transmet ou on émet. Il est utilisé sur un hub connecté à un switch et le Switch utilise CSMA/CD. 
+
+Le switch détecte un hub grâce  à des impulsions électrique qui identifie la vitesse. 
+
+Le switch Ethernet fonctionne sans configuration. Il sait les adresses des machines branchées quand elles envoies des paquets. S'il ne sait pas, il envoie à tout le monde. Dès qu'il sait quelle machine est derrière quel port, il rempli sa table de filtrage. 
+
+# slide 32 limite pour TE
+
