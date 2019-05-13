@@ -50,7 +50,24 @@ On recherche l'élément le plus petit du tableau est on le place au début du t
 
 insérer à la fin devient le pire cas quand la taille == la capacité. suppression à la fin pourrait être de complexité constante si on utilise pas shrink to fit. 
 
+# Tas 
 
+make_Heap sert à faire le tas, il fait descendre les parents, s'ils sont plus petits, vers le plus grand enfant. 
 
+pop_heap sert à effacer l'élément racine. on échange l'enfant le plus bas dans l'arbre. Ensuite on fait redescendre la racine sur le plus grand enfant pour qu'il soit à sa place. 
 
+push_heap, on insère l'élément en dernier, puis on le fait remonter. 
 
+sort_heap
+
+# priority_queue
+
+si on rentre une paire d'élément dans la file, on ressort en regardant d'abord le premier mais si ils sont égales on regarde le deuxième. 
+
+emplace sort les éléments dans l'ordre inverse de pop. 
+
+# Arbre
+
+ancêtre d'un noeud est le noeud parent jusqu'à la racine
+
+traitement symétrique, on traite directement les feuille si c'est un nœud interne, on traite le membre de gauche pui le noeud central puis le membre de droite. 

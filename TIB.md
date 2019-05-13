@@ -73,5 +73,77 @@ Le switch détecte un hub grâce  à des impulsions électrique qui identifie la
 
 Le switch Ethernet fonctionne sans configuration. Il sait les adresses des machines branchées quand elles envoies des paquets. S'il ne sait pas, il envoie à tout le monde. Dès qu'il sait quelle machine est derrière quel port, il rempli sa table de filtrage. 
 
-# slide 32 limite pour TE
+# Routage
+
+Chaque paquet dispose de l'adresse de destination, cette dernière est interprétée par le routeur via sa table de routage. si elle n'y est pas, il utilise celle par défaut. si un paquet n'est pas routable, il l'écarte. 
+
+- Acheminement : on a besoin du prochain routeur pour la résolution d'adresse MAC et parce que derrière il y peut-être un sous réseau. 
+  - fonctionnalité du protocole IP
+  - exécutée pour chaque paquet = rapide
+  - Ip utilise la table de routage pour définir le prochain saut
+- Routage: 
+  - fonctionnalité des protocole de routage 
+  - remplir les tables de routage avec les meilleures chemins
+  - exécutée périodiquement
+
+Une requête ARP sert à savoir l'adresse MAC. On sait qu'une machine est sur le même sous-réseau grâce à l'IP et au mask. 
+
+## Remise direct
+
+- destinataire sur le même sous réseau
+- transmission sans passer par un noeud
+- construit une trame Ethernet
+
+## Remise indirect
+
+- le destinataire est dans un autre réseau
+- il faut passer par un nœud pour envoyer
+- construit une trame Ethernet avec adresse MAC du prochain noeud
+
+## Table de routage
+
+### Statique
+
+configuration manuellement, petit réseaux.
+
+un routeur connaît les réseaux directement connecté, ll faut configurer les routes vers les autres réseaux. 
+
+### Dynamique
+
+protocole de routage pour l'échange d'information entre routeur, il calcul les routes et rempli la table de routage, s'adapte automatiquement aux pannes. 
+
+trouve le meilleur chemin en échangeant les informations avec les autres routeurs
+
+## Algorithme de Dijkstra
+
+1) préparation de la représentation
+
+2) Marquer chaque noeud par un doublet (distance source, noeud précèdent )
+
+3) choisir le noeud avec le coût le plus bas et le marqué comme permanent
+
+4) calculer le chemin de tous les voisins 
+
+5) répéter 2 et 3 jusqu'à que la destination soit marquée permanent
+
+## RIP
+
+- Protocole de routage simple 
+- petits réseaux
+- calcul en nombre de sauts
+- famille vecteur de distance 
+- diamètre limité à 15 sauts
+- mise à jour lente 
+
+les méthodes pour accélérer les nouvelles routes en cas de pannes sont l'horizon éclaté, et l'horizon éclaté avec retour empoisonné. 
+
+# Niveaux de routage
+
+- routage à l'intérieur d'un AS 
+  - calcul des routes optimales 
+- routage à l'extérieur d'un AS
+  - n'utilise pas de métrique
+  - protocole BGP4 
+
+
 
