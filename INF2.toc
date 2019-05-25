@@ -1,8 +1,0 @@
-\babel@toc {french}{}
-\contentsline {section}{\numberline {1}Les classes}{3}
-\contentsline {section}{\numberline {2}Constructeurs}{3}
-\contentsline {section}{\numberline {3}Compilation s\IeC {\'e}par\IeC {\'e}e}{3}
-\contentsline {section}{\numberline {4}Surcharge d'op\IeC {\'e}rateurs}{4}
-\contentsline {section}{\numberline {5}Membres constants ou statiques}{4}
-\contentsline {section}{\numberline {6}Membres particuliers}{4}
-\contentsline {section}{\numberline {7}G\IeC {\'e}n\IeC {\'e}ricit\IeC {\'e}}{4}

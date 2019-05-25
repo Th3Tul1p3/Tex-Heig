@@ -22,7 +22,32 @@ Cisco_ff꞉fc꞉3c->>Vmware_26꞉7e꞉73: 10.192.74.100 is at 00:08:e3:ff:fc:3c
 8.8.8.8->>10.192.74.58:echo(ping)reply
 ````
 
+```sequence
+10.192.72.132 ->> ns01.hessoadm.ch: étape 1
+ns01.hessoadm.ch->>racine '.': étape 2
+racine '.' -->> ns01.hessoadm.ch:
+ns01.hessoadm.ch->>'.com': étape 3
+'.com' -->> ns01.hessoadm.ch:
+ns01.hessoadm.ch->>'.gmail': étape 4
+'.gmail' -->> ns01.hessoadm.ch:
+ns01.hessoadm.ch->>'smtp': étape 5
+'smtp' -->> ns01.hessoadm.ch:
+ns01.hessoadm.ch -->> 10.192.72.132 :étape 6
+```
 
+```sequence
+10.192.72.132 ->> ns01.hessoadm.ch: Standard query A smtp.gmail.com
+ns01.hessoadm.ch->>10.192.72.132: Standard query response A smtp.gmail.com CNAME 
+```
 
-
+```sequence
+10.192.72.132 ->> ns01.heig−vd.ch: étape 1
+ns01.heig−vd.ch->>f.root−servers.net \n'.org': étape 2
+f.root−servers.net \n'.org' -->> ns01.heig−vd.ch:
+ns01.heig−vd.ch->>c0.org.afilias−nst.info\n'wikipedia.org.': étape 3
+c0.org.afilias−nst.info\n'wikipedia.org.' -->> ns01.heig−vd.ch:
+ns01.heig−vd.ch->>ns0.wikimedia.org\nfr.wikipedia.org.:étape 4
+ns0.wikimedia.org\nfr.wikipedia.org.-->>ns01.heig−vd.ch:
+ns01.heig−vd.ch -->> 10.192.72.132: étape 5
+```
 
