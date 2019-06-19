@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\title{ISI}
+\author{Jérôme Arn}
+\date{2 février 2019}
+
+\begin{document}
+\section{Introduction}
+La sécurité n'est souvent pas considéré comme un produit qui rapporte de l'argent. Il est aussi difficile de quantifier la valeur ajoutée. Mais un manque de sécurité peut provoquer des pertes financières, une dégradation de l'image ou une perte de confiance. 
+
+\section{Aspects légaux}
+\bigskip
+\begin{itemize}
+	\item[La soustraction de données art. 143]
+	\item[L'accès indu à un système informatique art. 143bis]
+\end{itemize}
+\bigskip
+Il n'y a pas que ces domaines juridiques qui sont touchés. La propriété intellectuelle, la protection des données personnelles, les contrats sont les différents qui peuvent être touchés.
+\section{SSI}
+La SSI peut être définie comme la sécurité des informations dans un système d'information. Un système d'information étant un ensemble de personne qui receuillent de l'information pour une organisation. 
+Le modèle en oignon est constitué dans l'ordre:
+A partir de la deuxième couche, la sécurité est dite technique. Pour une sécurité efficace, chaque couche doit implémenter ses propres concepts de sécurité. De plus il contrôle l'accès à la couche supérieur. Il faut éviter les systèmes en coquille d'oeuf.
+\bigskip
+\begin{itemize}
+	\item[Physique:]éviter des dégâts sur les infrastructures techniques.
+	\item[Réseau:]architecture et éléments réseau.
+	\item[Protocole:]protocoles de communication.
+	\item[Hôte:]systèmes d'exploitation et applications hosts.
+	\item[Application:]langage de programmation, données spécifiques. 
+	\item[Information:]information à protégé.
+\end{itemize}
+\bigskip
+
+\newline \uline{CIA(CID)} Confidentialité: s'assurer que seul les personnes ayant droit peuvent accéder à l'information, intégrité: protéger l'exactitude et la complétude de l'information et disponibilité: s'assurer que les utilisateurs ont accès à ce qu'il faut quand il faut. 
+\newline \uline{AAA} Authentification: s'assurer que la personne est bien celle qu'elle prétend être, Autorisation: détermine en fonction de la personne si l'accès est autorisé et Accountings'assurer d'une tracabilité des opérations effectuées. 
+
+Il existe trois domaines en SSI. la sécurité physique, la sécurité organisationnelle et la sécurité technique.
+
+\bigskip
+\begin{itemize}
+	\item[Physique:] infrastructures, contrôle d'accès physique, câblage.
+	\item[Technique:] le traitement, le stockage et la communication de l'information. 
+	\item[Organisationnelle:]aspects sociaux, légaux, humains. Les procédures, contrats.
+\end{itemize}
+\bigskip
+Une vunérabilités est une faille encore non exploitée d'un bien. L'exploitation est lorsque la vulnérabilité a été utilisée. Les conséquences d'un dommage sont évalués en fonction de la perte de confidentialité, de la perte d'intégrité et/ou de la perte de disponibilité de l'information. 
+Une activité en SSi peut être vu comme une prévention, une détection, une réaction et une récupération. 
+
+\section{Fondamentaux en architecture}
+\bigskip
+\begin{itemize}
+	\item[La sécurité globale est aussi forte que le maillon le plus faible]
+	\item[La sécurité parfaite est impossible]
+	\item[La sécurité est un processus et non un produit]
+	\item[La sécurité est inversement proportionnelle à la complexité]
+	\item[Inclure les utilisateurs]
+\end{itemize}
+\bigskip
+
+\section{Stratégie d'architecture}
+\bigskip
+\begin{itemize}
+\end{itemize}
+	\item[Interdiction par défaut]
+	\item[Moindre privilège]
+	\item[Défense en profondeur]
+	\item[Séparation des fonctions]
+	\item[Segmentation]
+	\item[Economie de mécanisme]
+	\item[Goulet d'étranglement]
+	\item[Interruption sûre]
+	\item[Eviter la sécurité par l'obscurité]
+\bigskip
+\section{Sécurité systèmes}
+On peut différencier trois types de menaces différentes, les menaces accidentelles, environnementales et les délibérées. La norme ISO 27005 différencie 6 types de vulnérabilités: matériel, logiciel, réseau, personnel(social), site(infrastructures) et organisation(processus). 
+
+La procédure type d'une intrusion commence par une collecte d'informations qu'elles soient technique ou non. Pour cela on peut faire des recherches web(avec des commandes google, ou réseau sociaux), le questionnement de services internet et le social engineering. Ce dernier consiste à gagner la confiance de personne pour obtenir des services ou des informations. 
+
+La prochaine étape est l'intrusion systèmes. Soit par des vulnérabilités conceptuelles, d'implémentation ou de configuration. 
+\subsection{Les mots de passe}
+Les mots de passe contrôlent l'accès à de l'information en général. Ils sont généralement transmit sous formes d'empreintes. Une empreinte est générée par une fonction de hachage qui est un procédé cryptographique irréversible.
+
+Le cassage de mots de passe en ligne peut se faire en ligne ou hors ligne. En ligne, l'attaquant doit dans un premier temps essayer le mot de passe puis attendre la réponse système. Mais cela laisse des traces dans les fichiers logs. Hors ligne, IL faut obtenir les empreintes et ensuite procéder à l'attaque. 
+Il y a plusique type d'attaque. la force Brute recherche exhaustive de toutes les combinaisons. Cette méthode à l'avantage de ne pas nécessité de mémoire mais elle a besoin de beaucoup de temps. Par dictionnaire, utilisation d'une liste. Heuristique, variations des éléments du dictionnaires. Ces deux dernières méthodes ont besoin de peu de temps mais d'une quantité énorme d'espace. Et Prégénération des empreintes, avec la méthode Hellman pour le compromis temps-mémoire et la méthode Oeschlin pour les rainbow tables. La recherche naïve va tester toutes les combinaisons aléatoirement. 
+
+Le compromis temps-mémoire consiste à choisir un mot de passe et à lui appliquer consécutivement une fonction de hachage et une fonction de réduction. on constitue ainsi un tableau
+déjà préparé. 
+La rainbow tables fait la même chose mais en changeant de fonction de réduction à chaque fois. 
+
+Une manière de renforcer la sécurité est d'ajouter un aléa ou sel lors du hachage. Cela consiste à générer une partie aléatoire pour la la partie du mdp. Cela à l'avantage d'éviter d'avoir le même hache si deux mdp sont les mêmes. 
+Les mdp sous Windows sont protéger soit par LM hash ou NTLM hash (plus récent). Le chiffrage sous linux dépend de l'OS mais est généralement sous MD5. 
+\end{document}
