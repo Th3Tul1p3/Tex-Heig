@@ -1,2 +1,0 @@
-# Probabilité et statistique 
-
