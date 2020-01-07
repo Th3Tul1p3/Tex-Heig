@@ -1,0 +1,357 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage[top=1cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\date{}
+
+\begin{document}
+
+\hypertarget{header-n2}{%
+\section{ASD2}\label{header-n2}}
+
+\begin{itemize}
+\item
+  la taille c'est le nombre d'arêtes
+\item
+  l'ordre est le nombre de sommet
+\item
+  graphe simple : pas de boucle et pas plus d'une arête par paire de
+  sommet
+\item
+  graphe partiel: on supprime quelques arêtes 
+\item
+  sous graphe: on supprime quelques sommets
+\item
+  des sommets sont \textbf{adjacents} s'il y a une arête entre eux
+\item
+  Graphe complet si tous les commets sont connecté entre eux
+\end{itemize}
+
+\hypertarget{header-n19}{%
+\subsection{Composantes connexes }\label{header-n19}}
+
+La relation de connectivité est réflexive, transitive et symétrique.
+
+\hypertarget{header-n21}{%
+\subsection{Cycles d'Euler et Hamilton}\label{header-n21}}
+
+Un graphe connexe admet un cycle Eulérien si et seulement si il n'a pas
+de sommet de degré impair. Le premier et le dernier sommet peuvent être
+di érents, et dans ce cas de degré impair.
+
+Un cycle Eulérien passe une et une seule fois par chaque arrête et un
+cycle Hamiltonien passe une et une seule fois par chaque sommet.
+
+Chaîne Eulérienne: Le premier et le dernier sommet peuvent être di
+érents, et dans ce cas de degré impair.
+
+\hypertarget{header-n23}{%
+\section{Expressions Lambdas }\label{header-n23}}
+
+\begin{figure}
+\centering
+\includegraphics{/media/Partage/HEIG/Tex-Heig/ASD2/img/LAMBDA.png}
+\caption{}
+\end{figure}
+
+\hypertarget{header-n25}{%
+\section{Graphe orienté}\label{header-n25}}
+
+Représentation par matrice d'adjacence \textbf{O(V)} efficace seulement
+si le graphe est complet. Par listes d'adjacences \textbf{O(degré(v))}.
+
+\textbf{Parcours avec un DFS pour savoir quels sont les sommets
+atteignables depuis un sommet. } \textbf{Pour savoir le plus court
+chemin il faut faire un BFS}
+
+\begin{itemize}
+\item
+  sommet demi-degré intérieur : flèches entrantes
+\item
+  sommet demi-degré extérieur : flèches sortantes
+\item
+  Tri topologique : trier les sommets pour que les arcs pointent vers le
+  haut 
+\item
+  connectivité forte : chemin entre tous les couples de sommets La
+  matrice n'est pas symétrique. 
+\item
+  composantes fortement connexe: est un ensemble de sommet fortement
+  connectés 
+\item
+  il y a deux types d'arcs:
+
+  \begin{itemize}
+  \item
+    ceux qui restent dans la même CFC 
+  \item
+    Ceux qui mènent d'une CFC à une autre 
+  \end{itemize}
+\item
+  Si on regroupe tous les sommets d'une même CFC on obtient un graphe
+  acyclique 
+\end{itemize}
+
+\hypertarget{header-n48}{%
+\subsection{Tri topologique }\label{header-n48}}
+
+Trier les sommets de manière à ce que tous les sommets pointent dans la
+même direction. N'est possible que pour un graphe acyclique. Se trouve
+avec un DFS post-ordre inversé.
+
+Pour détecter un cycle on utilise la pile récursion. si dans le parcours
+on tombe sur un sommet se trouvant déjà dans la pile -\/-\textgreater{}
+cycle.
+
+\hypertarget{header-n51}{%
+\subsection{Connectivité forte }\label{header-n51}}
+
+Deux sommets sont fortement connectés s'il existe un chemin dans un sens
+et dans l'autre. C'est une relation d'équivalence si elle est réflexive,
+symétrique et transitive. Une CFC est un ensemble maximal de sommets
+fortement connectés.
+
+On distingue deux types d'arcs:
+
+\begin{itemize}
+\item
+  ceux qui restent dans la même CFC, Si on regroupe tous les sommets
+  d'une même CFC on obtient un graphe acyclique. De cette manière on
+  peut le trier topologiquement. 
+\item
+  ceux qui mènent dans une CFC à l'autre
+\end{itemize}
+
+Un graphe G et son graphe inverse ont les mêmes composantes fortement
+connexes. \textbf{L'algorithme de Kosaraju-Sharir calcul le post ordre
+inverse du parcours en profondeur d'un graphe inverse.}
+
+\hypertarget{header-n60}{%
+\subsection{Algorithme de kosaraju-sharir }\label{header-n60}}
+
+Calcul du post-ordre inverse DFS sur le graphe inverse.
+
+\hypertarget{header-n62}{%
+\section{Union find }\label{header-n62}}
+
+\hypertarget{header-n63}{%
+\subsection{Recalcul des composantes connexes}\label{header-n63}}
+
+Lorsque le graphe n'a aucune arrête, chaque sommet forme une CC
+différente qu'on étiquette par le numéro du sommet. Chaque sommet pointe
+sur une sommet représentatif
+
+\begin{itemize}
+\item
+  quick find pour savoir la CC d'un sommet \textbf{O(1)}
+\item
+  connected savoir si deux sommets sont de la même CC
+\item
+  union unir deux CC \textbf{O(V)}
+\end{itemize}
+
+Faire pointer chaque sommet sur un autre sommet de la CC et identifier
+chaque sommet par un sommet représentatif qui pointe sur lui-même.
+
+complexité en log*(n) augmente très lentement
+
+\hypertarget{header-n74}{%
+\section{Minimum spanning Trees}\label{header-n74}}
+
+Sur un graphe dont les arrêtes ont des poids positifs. Un arbre couvrant
+est un sous-graphe qui est \textbf{Connexe, acyclique et qui inclus tous
+les sommets}. Trouver un arbre couvrant tous les sommets d'un poids
+minimum.
+
+\begin{itemize}
+\item
+  sans cycle et avec n-1 arrêtes
+\item
+  connexe et admet n-1 arrêtes 
+\item
+  sans cycle, en ajoutant une arrête on crée un et un seul cycle
+  élémentaire
+\item
+  connexe, en supprimant une arrête quelconque, il n'est plus connexe. 
+\item
+  il existe une chaîne et une seule entre 2 sommets. 
+\end{itemize}
+
+\hypertarget{header-n87}{%
+\subsection{Algorithme glouton}\label{header-n87}}
+
+Un algorithme qui suit le principe de faire, étape par étape, un choix
+optimum local.
+
+La coupe d'un graphe est une partition en deux sous ensemble disjoints
+et exhaustifs. C'est aussi un ensemble des arêtes ayant un sommet dans
+chacune des deux partitions.
+
+\begin{itemize}
+\item
+  On choisi une coupe sans arrête déjà dans le MST recommencer jusqu'à
+  que V-1 arrêtes soient rouges. 
+\end{itemize}
+
+\hypertarget{header-n93}{%
+\subsection{Algorithme de Kruskal}\label{header-n93}}
+
+Fait croître jusqu'à couverture totale. On considère les arrêtes par
+liste de poids croissant. si l'arrête ne fait pas de cycle, on l'ajoute.
+On teste si l'arrête ajoutée crée un cycle avec des union-find avec une
+complexité de O(log*V) qui augmente très lentement. Quand on ajoute une
+arrête avec les sommets v et w on appel union(v,w) si ils ne sont pas
+connected(v,w). Puis on utilise une priority queue pour trier les
+arrêtes.
+
+Le calcul du MST se fait en temps proportionnel de E * log(E) mais si
+les arrêtes sont déjà ordonné, cela ne prend que E * log(V) qui est
+linéaire en E.
+
+\hypertarget{header-n96}{%
+\subsection{Algorithme de Prim}\label{header-n96}}
+
+\hypertarget{header-n97}{%
+\subsubsection{Version paresseuse}\label{header-n97}}
+
+\begin{itemize}
+\item
+  On fait une PQ avec toutes les arrêtes connectées à l'arbre courant
+  par au moins un sommet. 
+\end{itemize}
+
+\hypertarget{header-n101}{%
+\subsubsection{Version stricte}\label{header-n101}}
+
+\begin{itemize}
+\item
+  On fait une PQ avec les sommets, la priorité de ces derniers est le
+  poids le plus petit parmi les arêtes connectant à ce sommet à l'arbre.
+\end{itemize}
+
+Quand on sort un sommet v de la PQ, on ajoute l'arête v-w associée à
+l'arbre et l'on considère les\\
+arêtes w-x adjacentes. Si x est dans l'arbre, on l'ignore Si x est
+absent de la PQ, on l'ajoute avec la priorité du poids de w-x Sinon, on
+abaisse la priorité de x si le poids de w-x est plus bas que le poids
+dans la PQ
+
+\hypertarget{header-n105}{%
+\section{Chemin les plus courts }\label{header-n105}}
+
+Terminologie : raccourcir le chemin = "relâcher" un ressort imaginaire
+qui va du sommet source à w, parce qu'on a trouvé un chemin plus court
+qu'auparavant
+
+\hypertarget{header-n107}{%
+\subsection{Graphes acyclique }\label{header-n107}}
+
+Traiter les sommets par ordre topologique.
+
+\hypertarget{header-n109}{%
+\subsection{Algorithme de Dijkstra}\label{header-n109}}
+
+On traite une seule fois chaque sommet, on traite les sommets par ordre
+de distance croissante. \textbf{Seulement pour les poids non-négatifs}.
+O(E*log(V))
+
+\hypertarget{header-n111}{%
+\subsection{Algorithme de Bellman-Ford}\label{header-n111}}
+
+On s'arrête à V-1 passages. Faire attention au circuit absorbant car on
+peut avoir des poids négatifs. Si après V-1 passage on peut toujours
+diminuer une distance entre deux sommets, il y a un circuit absorbant.
+On relâché1 plusieurs fois chaque sommet. O(E*V)
+
+\hypertarget{header-n113}{%
+\section{Complexité }\label{header-n113}}
+
+Le parcours en largeur sur matrice d'adjacence O(V*V) et par liste
+d'adjacence O(V+E).
+
+Méthode reverse: O(N). insertion set O(log(N)),
+
+\begin{figure}
+\centering
+\includegraphics{/media/Partage/HEIG/Tex-Heig/ASD2/img/Graphe.png}
+\caption{}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{/media/Partage/HEIG/Tex-Heig/ASD2/img/kruskal.png}
+\caption{}
+\end{figure}
+
+\hypertarget{header-n116}{%
+\subsection{Dijkstra}\label{header-n116}}
+
+\begin{figure}
+\centering
+\includegraphics{/media/Partage/HEIG/Tex-Heig/ASD2/img/Dijskstra.png}
+\caption{}
+\end{figure}
+
+\hypertarget{header-n126}{%
+\section{Quiz}\label{header-n126}}
+
+Pour un graphe creux, il est préférable de choisir une implémentation
+par listes d'adjacence.
+
+\end{document}

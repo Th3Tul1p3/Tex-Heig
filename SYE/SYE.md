@@ -12,7 +12,7 @@ Un OS est une couche entre l'utilisateur et la machine. Il donne une API qui est
 
 - perspective système : gestion de la ressource physique, logique et de la protection
 
-monolithique: qui a tous les sous-système est inclus dans le noyau. 
+monolithique: qui a tous les sous-système est inclus dans le noyau.  Cela consiste a placer tous les driver dans l'espace noyau. 
 - performance accrue 
 - simplicité d'accès sur le structures du noyau
 - Mais probème liés à la sécurité d'exécution

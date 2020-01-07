@@ -60,8 +60,6 @@ Le SGBD doit transformer toutes les requêtes de schéma externe en requête sch
 les schémas supérieurs ne doivent pas être impactées par des changement à la couche inférieur. 
 Les vues permettent de voir différemment l'information sans taper une requête très longue. Elles donnes un nom à la requête. 
 
-
-
 # Transaction
 
 C'est un processus en cours d'exécution qui implique un ou plusieurs accès à la BD. Si e.o. COMMIT sinon ROLLBACK et ça garde l'état d'avant la transaction. 
@@ -99,6 +97,22 @@ Avantages :
 - supporter par diver outils logiciels
 
 # Entité et type d'entité
+
+Le modèle se base sur les principes suivant:
+
+- entité, attribut clé, association, cardinalité, rôle.
+
+Un attribut peut être :
+
+- monovalué: il ne peut prendre qu'une seule valeur
+- multivalué:peut prendre plus d'une valeur
+- composite  qui peut être décomposé en plusieurs type simple
+- obligatoire ou non
+- dérivé: calculé à la volée 
+- Si on ne connaît pas sa valeur, elle est renseignée à NULL
+
+
+
 - EntitéTout objet identifiable et pertinent pour l'application
 - Type d'entité
     - identificateur 
@@ -118,7 +132,7 @@ Avantages :
 - clé naturelle : appartient naturellement à l'entité comme l'année de naissancei ou le numéro AVS
     - avantage : existe déjà dans l'entité
     - désavantage : liée à la logique métier. si elle change tout change. par exemple N°AVS qui pourrait changer 
-- clé artificielle : attribut non lié à l'individu naturellement 
+- clé artificielle : attribut non lié à l'individu naturellement comme un numéro d
     - avantage : pas lié à la logique métier 
     - désavantage : ne véhicule pas d'information. 
 - Association : relation entre ensemble 
@@ -133,9 +147,9 @@ Avantages :
     - association plusieurs à plusieurs
 - Dans le cas d'une association n:m certains attributs ne peuvent pas être affectés qu'à l'association elle-même. 
 - type d'entité faible : ne peut exister qu'en étroite association avec des types d'entités forts (composition en UML)
-
 - Une association réflexive est une associtation entre un type d'identité et elle-même. 
 Les contraintes d'intégrité qui ne peuvent pas être exprimée à l'aide de concepts de base du modèle EA sont à mettre en commentaires.
+- Les cardinalités minimales sont aussi appelées contraintes de participation
 
 Le problème des associations n-aires, et que dans une clé composé de plusieurs éléments, si un seul élément change, on peut faire rentrer des tuples que l'on ne voudrait pas. On résoudre ce problème en introduisant une clé artificielle composé d'un seul attributs. 
 
@@ -168,3 +182,184 @@ WHERE champs = valeurs);
 - **SET** spécifie les attributs à modifier ainsi que leurs nouvelles valeurs
 
 l'intégrité révérencielle est le fait d'empêcher l'insertion d'une clé primaire qui n'existe pas. 
+
+# Chapitre 3 : modèle relationnel
+
+Se base sur une notion mathématique de relation. Et se fait uniquement à partir du modèle EA. 
+
+## Le produit cartésien 
+
+Peut être représenté :
+
+- en extension
+- tabulaire
+- cartésien
+- arborescent
+- sagittale
+
+## Relation 
+
+Une relation est l'ensemble des attributs. Une arité de relation est le nombre d'attributs. La valeur NULL est utilisée pour représenté les valeurs inconnues ou manquantes. 
+
+## SQL
+
+Il est utilisé par tous les SGBDR. 
+
+```sql
+// création de schéma 
+CREATE SCHEMA compagny;
+CREATE DATABASE compagny;
+
+// spécifie le schéma à utiliser
+USE compagny;
+
+CREATE TABLE department(
+	// attribut
+	DATE INT VARCHAR TIME DECIMAL BOOLEAN // sont des types de données
+);
+
+```
+
+### Contraintes 
+
+on peut faire des contraintes de plusieurs manières:
+
+- de domaine: s'exprime au travers tu type de donnée de l'attribut
+- de clé : désigné par **PRIMARY KEY** 
+
+```sql
+CREATE TABLE department(
+	Ssn char(9),
+	PRIMARY KEY (Ssn)
+	CONSTRAINT PK_employee PRIMARY KEY (Ssn) // pour une contrainte de clé
+);
+```
+
+
+
+- d'intégrité des entités : aucune  valeur de clé primaire ne peut être NULL
+- des valeurs non NULL:  En spécifiant NOT NULL
+- valeurs uniques : en spécifiant UNIQUE
+- intégrité révérencielle
+
+```sql
+CREATE TABLE department(
+	Dno INT(11) NOT NULL DEFAULT1,
+	FOREIGN KEY (Dno) REFERENCES Department(Dnumber)
+);
+```
+
+- d'intégrité sémantique: ne peuvent être exprimées via le modèle relationnelle
+
+### changement d'état de base 
+
+- insertion : INSERT permet d'ajouter un seul tuple à la relation et être écrites dans l'ordre spécifiés dans la table. Ou de spécifier l'ordre de ceux-ci. 
+- suppression : DELETE where sert à sélectionner un tuple à supprimer sinon tous les tuples sont supprimés.
+- modification : UPDATE 
+  - WHERE sert à sélectionner un tuple à modifier sinon tous les tuples sont modifiés.
+  - SET permet de changer un attributs et de lui attribuer une nouvelle valeur.
+
+Modifications automatique sur des clés étrangères ON DELETE/UPDATE CASCADE
+
+# Chapitre 4: Règle de transformation
+
+## types entités normaux
+
+On fait simplement une relation avec la clé primaire et les attributs. 
+
+## types entités faibles
+
+On fait d'abord une relation de l'entité forte avec ses différents attributs. Puis ensuite une deuxième relation avec une  avec la clé de l'entité forte, la clé de l'entité faible ainsi que les attributs de l'entité faible. Finalement on fait une référence de contrainte sur la clé étrangère. 
+
+## binaire 1:1
+
+Trois différents cas :
+
+- obligatoire de chaque côté, donc cardinalité de 1 
+
+  Faire une relation avec une des entité en incluant la clé primaire de l'autre. Puis faire une relation de cette dernière. Faire une référence sur la clé étrangère en la spécifiant NOT NULL et UNIQUE
+
+- mixte avec une cardinalité 0..1 et 1
+
+  Faire une relation avec l'entité ayant une cardinalité de 1 en incluant la clé primaire de l'autre. Puis faire une relation de cette dernière. Faire une référence sur la clé étrangère en la spécifiant NOT NULL et UNIQUE
+
+- complètement facultatif avec 0..1 pour tous
+
+  Faire une relation avec une des entité en incluant la clé primaire de l'autre. Puis faire une relation cette dernière. Faire une référence sur la clé étrangère en la spécifiant  NULLABLE et UNIQUE
+
+Faire attention aux types d'entités spéciaux sans identifiant explicite. 
+
+## binaire 1:N
+
+- association sans attribut avec cardinalité de 1 ou 0..1
+
+Une référence de l'entité avec cardinalité de 1 et la clé primaire de l'autre. Une référence sur l'autre entité. Une référence sur la clé étrangère avec NOT NULL si cardinalité de 1 ou NULLABLE si cardinalité de 0..1.
+
+- association avec attribut et cardinalité de 1
+
+Une référence de l'entité avec cardinalité de 1 et la clé primaire de l'autre et les arguments de l'association. Une référence sur l'autre entité. Une référence sur la clé étrangère avec NOT NULL.
+
+- association avec attribut et cardinalité de 0..1
+
+Une référence pour chaque entité. Une référence avec la clé primaire de chaque entité ainsi que les attributs de l'association. les références des clés étrangères **en Spécifiant la clé de l'entité de cardinalité de 1 comme NOT NULL**
+
+## binaire M:N avec attributs d'association
+
+Chaque entité devient une relation,  ainsi qu'une relation contenant les deux clés primaires des entités et des attributs de l'association. Ne pas oublier les références sur les clés étrangères. 
+
+## attributs multivalués
+
+Faire une relation avec les attributs simples. Puis une autre avec la clé et l’attribut multivalué en référençant la clé primaire  avec la relation précédente. 
+
+## associations n-aires
+
+Transformer les associations n-aires en binaires. Puis faire une relation pour chaque entité avec "l'entité noeu" .  Puis faire une relation avec les clés primaires de toutes les entités ainsi que des attributs de l'association. en faisant référence aux clés étrangères. 
+
+## type héritage
+
+Il existe plusieurs types d'héritage:
+
+- complet, disjoint
+
+- complet overlapping
+
+- incomplet disjoint
+
+- incomplet overlapping
+
+  Faire une relation pour l'entité parent. Puis faire une relation pour chaque entité héritant en incluant la clé primaire du parent avec une référence. 
+
+Pour les autres types c'est plus complexe. 
+
+## associations réflexives 
+
+- Type N:M
+
+  Faire une relation de l'entité elle-même Puis du lien qui l'uni à elle-même avec les références. 
+
+# Opérateur 
+
+chaque opérateur algébrique ressort une nouvelle relation. 
+
+## Selection
+
+équivalent SQL WHERE. selectionne par lignes 
+
+## Projection 
+
+selection par colonne. en supprimant les doublons de cette dernière. équivalent SQL SELECT DISTINCT ( pour avoir un équivalent ensembliste)
+
+## Produit Cartésien
+
+Associe toutes les lignes d'une table à toutes celles d'une autre table. Mais multiplie aveuglement sans regarder la pertinence. 
+
+## Union
+
+l'équivalent SQL UNION est déjà ensembliste.
+
+## La différence 
+
+
+
+## La jointure 
+
